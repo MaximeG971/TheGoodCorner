@@ -1,17 +1,14 @@
+import cors from "cors";
 import "reflect-metadata";
 import express from "express";
-// import sqlite3 from "sqlite3";
 import { dataSource } from "./config/db";
 import { Ad } from "./entities/ad";
 import { Category } from "./entities/category";
 import { Tag } from "./entities/tag";
 
-// const db = new sqlite3.Database("../backend/the_good_corner.sqlite");
-
-// db.get("PRAGMA foreign_keys = ON");
-
 const app = express();
 app.use(express.json());
+app.use(cors());
 const port = 5001;
 
 app.listen(port, async () => {

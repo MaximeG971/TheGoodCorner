@@ -1,6 +1,3 @@
-import Link from "next/link";
-import React from "react";
-
 const Header = () => {
   return (
     <header className="header">
@@ -29,63 +26,63 @@ const Header = () => {
             </svg>
           </button>
         </form>
-        <Link href="/post-ad" className="button link-button">
+        <a href="/post-ad" className="button link-button">
           <span className="mobile-short-label">Publier</span>
           <span className="desktop-long-label">Publier une annonce</span>
-        </Link>
+        </a>
       </div>
       <nav className="categories-navigation">
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Ameublement
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Électroménager
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Photographie
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Informatique
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
-          Téléphonie
-        </Link>
+        <a href="" className="category-navigation-link">
+          Téléphonie{" "}
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Vélos
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Véhicules
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Sport
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Habillement
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Bébé
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Outillage
-        </Link>
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
-          Services
-        </Link>
+        <a href="" className="category-navigation-link">
+          Services{" "}
+        </a>{" "}
         •
-        <Link href="" className="category-navigation-link">
+        <a href="" className="category-navigation-link">
           Vacances
-        </Link>
+        </a>
       </nav>
     </header>
   );

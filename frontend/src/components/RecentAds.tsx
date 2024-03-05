@@ -1,54 +1,38 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import AdCard, { AdCardProps } from "./AdCard";
 
-const ads: AdCardProps[] = [
-  {
-    imgUrl: "/images/table.webp",
-    link: "/ads/table",
-    price: 120,
-    title: "Table",
-  },
-  {
-    imgUrl: "/images/dame-jeanne.webp",
-    link: "/ads/dame-jeanne",
-    price: 75,
-    title: "Dame-Jeanne",
-  },
-  {
-    imgUrl: "/images/vide-poche.webp",
-    link: "/ads/vvide-poche",
-    price: 4,
-    title: "Vide-Poche",
-  },
-  {
-    imgUrl: "/images/vaisselier.webp",
-    link: "/ads/vaisselier",
-    price: 900,
-    title: "Vaisselier",
-  },
-  {
-    imgUrl: "/images/bougie.webp",
-    link: "/ads/bougie",
-    price: 8,
-    title: "Bougie",
-  },
-  {
-    imgUrl: "/images/porte-magazine.webp",
-    link: "/ads/porte-magazine",
-    price: 45,
-    title: "Porte-Magazine",
-  },
-];
-
 const RecentAds = () => {
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(
+    localStorage.getItem("CART_TOTAL")
+      ? JSON.parse(localStorage.getItem("CART_TOTAL") as string)
+      : 0
+  );
+
+  const [ads, setAds] = useState<AdCardProps[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get<AdCardProps[]>(
+          "http://localhost:5001/ads"
+        );
+        console.log("data from api", result.data);
+        setAds(result.data);
+      } catch (err) {
+        console.log("error", err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <h2>Annonces récentes</h2>
       <p>Coût total: {total}€</p>
       <section className="recent-ads">
         {ads.map((ad) => (
-          <div key={ad.title}>
+          <div key={ad.id}>
             <AdCard
               imgUrl={ad.imgUrl}
               link={ad.link}
@@ -60,6 +44,10 @@ const RecentAds = () => {
               onClick={() => {
                 console.log(ad.price);
                 setTotal(total + ad.price);
+                localStorage.setItem(
+                  "CART_TOTAL",
+                  JSON.stringify(total + ad.price)
+                );
               }}
             >
               Ajouter le prix au total
