@@ -35,7 +35,7 @@ const RecentAds = () => {
           <div key={ad.id}>
             <AdCard
               imgUrl={ad.imgUrl}
-              link={ad.link}
+              link={`/ads/${ad.id}`}
               price={ad.price}
               title={ad.title}
             />
