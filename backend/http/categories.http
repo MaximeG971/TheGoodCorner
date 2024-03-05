@@ -1,0 +1,10 @@
+POST http://localhost:5001/categories
+Content-Type: application/json
+
+{
+  "name": "véhicules"
+}
+
+###
+
+GET http://localhost:5001/categories

@@ -1,0 +1,14 @@
+GET http://localhost:5001/tags
+
+###
+
+POST http://localhost:5001/tags
+Content-Type: application/json
+
+{
+  "name": "new"
+}
+
+###
+
+DELETE http://localhost:5001/tags/3
