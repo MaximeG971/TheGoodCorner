@@ -6,7 +6,7 @@ const AdDetails = () => {
 
   return (
     <p>
-      This page will display the details of the ad with id {router.query.id}
+      This page will display the details of the ad with id: {router.query.id}
     </p>
   );
 };
