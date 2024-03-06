@@ -39,7 +39,7 @@ const AdDetailComponent = () => {
       <h2 className="ad-details-title">{ad.title}</h2>
       <section className="ad-details">
         <div className="ad-details-image-container">
-          <img className="ad-details-image" src="/images/table.webp" />
+          <img className="ad-details-image" src={ad.imgUrl} />
         </div>
         <div className="ad-details-info">
           <div className="ad-details-price">{ad.price}€</div>

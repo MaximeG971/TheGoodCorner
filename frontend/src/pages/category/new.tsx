@@ -13,7 +13,7 @@ const NewCategory = () => {
 
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
-        axios.post("http://localhost:5000/categories", formJson);
+        axios.post("http://localhost:5001/categories", formJson);
       }}
     >
       <label>
