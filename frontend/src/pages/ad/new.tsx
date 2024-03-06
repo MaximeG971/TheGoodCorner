@@ -25,14 +25,16 @@ const NewAd = () => {
 
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
+        console.log("formdata entries", formData.entries());   
 
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);
+        axios.post("http://localhost:5001/ads", formJson);
       }}
     >
       <label>
         Titre de l&apos;annonce: <br />
-        <input className="text-field" name="titre" />
+        <input className="text-field" name="title" />
       </label>
       <br />
       <label>
@@ -51,9 +53,15 @@ const NewAd = () => {
       </label>
       <br />
       <label>
-        Image: <br />
-        <input className="text-field" name="picture" />
+        Ville: <br />
+        <input className="text-field" name="location" />
       </label>
+      <br />
+      <label>
+        Image: <br />
+        <input className="text-field" name="imgUrl" />
+      </label>
+      <br />
       <select name="category">
         {categories.map((el) => (
           <option value={el.id} key={el.id}>
@@ -61,6 +69,7 @@ const NewAd = () => {
           </option>
         ))}
       </select>
+      <br />
       <button className="button">Submit</button>
     </form>
   );

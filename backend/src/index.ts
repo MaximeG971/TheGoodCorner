@@ -1,4 +1,5 @@
 import cors from "cors";
+import { validate } from "class-validator";
 import "reflect-metadata";
 import express from "express";
 import { dataSource } from "./config/db";
@@ -31,16 +32,39 @@ app.get("/ads", async (_req, res) => {
   }
 });
 
+// app.post("/ads", async (req, res) => {
+//   try {
+//     console.log("data from front form", req.body);
+//     const ad = Ad.create(req.body);
+//     //  [1,2] => [{id: 1}, {id:2} ]
+//     ad.tags = req.body.tags.map((el: number) => ({ id: el }));
+//     await ad.save();
+//     res.send("Ad has been created");
+//   } catch (err) {
+//     console.log("error", err);
+//     res.status(500).send("An error has occured");
+//   }
+// });
+
 app.post("/ads", async (req, res) => {
   try {
+    console.log("data from front form", req.body);
     const ad = Ad.create(req.body);
-    //  [1,2] => [{id: 1}, {id:2} ]
-    ad.tags = req.body.tags.map((el: number) => ({ id: el }));
-    await ad.save();
-    res.send("Ad has been created");
+    // [1,2] -> [{id: 1}, {id: 2}]
+    if (req.body.tags) {
+      ad.tags = req.body.tags.map((el: number) => ({ id: el }));
+    }
+    const errors = await validate(ad);
+    if (errors.length > 0) {
+      console.log("validation errors", errors);
+      throw new Error(`Validation failed!`);
+    } else {
+      await ad.save();
+      res.send("Ad has been created");
+    }
   } catch (err) {
     console.log("error", err);
-    res.status(500).send("An error has occured");
+    res.status(500).send("an error has occured");
   }
 });
 
