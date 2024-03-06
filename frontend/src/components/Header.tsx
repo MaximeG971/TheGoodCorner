@@ -1,3 +1,7 @@
+import axios from "axios";
+
+import NavBar from "./NavBar";
+
 const Header = () => {
   return (
     <header className="header">
@@ -31,59 +35,7 @@ const Header = () => {
           <span className="desktop-long-label">Publier une annonce</span>
         </a>
       </div>
-      <nav className="categories-navigation">
-        <a href="" className="category-navigation-link">
-          Ameublement
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Électroménager
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Photographie
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Informatique
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Téléphonie{" "}
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Vélos
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Véhicules
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Sport
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Habillement
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Bébé
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Outillage
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Services{" "}
-        </a>{" "}
-        •
-        <a href="" className="category-navigation-link">
-          Vacances
-        </a>
-      </nav>
+      <NavBar />
     </header>
   );
 };
