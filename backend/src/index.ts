@@ -32,6 +32,18 @@ app.get("/ads", async (_req, res) => {
   }
 });
 
+app.get("/ads/:adId", async (req, res) => {
+  try {
+    const result = await Ad.findOneByOrFail({
+      id: Number.parseInt(req.params.adId),
+    });
+    res.send(result);
+  } catch (err) {
+    console.log("error", err);
+    res.send("an error has occured");
+  }
+});
+
 // app.post("/ads", async (req, res) => {
 //   try {
 //     console.log("data from front form", req.body);

@@ -25,7 +25,7 @@ const NewAd = () => {
 
         const form = e.target as HTMLFormElement;
         const formData = new FormData(form);
-        console.log("formdata entries", formData.entries());   
+        console.log("formdata entries", formData.entries());
 
         const formJson = Object.fromEntries(formData.entries());
         console.log(formJson);

@@ -38,6 +38,7 @@ const RecentAds = () => {
               link={`/ads/${ad.id}`}
               price={ad.price}
               title={ad.title}
+              owner={ad.owner}
             />
             <button
               className="button"
@@ -52,6 +53,7 @@ const RecentAds = () => {
             >
               Ajouter le prix au total
             </button>
+            <button className="button">Supprimer l&apos;annonce</button>
           </div>
         ))}
       </section>

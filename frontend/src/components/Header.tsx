@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import NavBar from "./NavBar";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -30,10 +31,10 @@ const Header = () => {
             </svg>
           </button>
         </form>
-        <a href="/post-ad" className="button link-button">
+        <Link href="/ad/new" className="button link-button">
           <span className="mobile-short-label">Publier</span>
           <span className="desktop-long-label">Publier une annonce</span>
-        </a>
+        </Link>
       </div>
       <NavBar />
     </header>
