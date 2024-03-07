@@ -83,16 +83,18 @@ app.post("/ads", async (req, res) => {
   }
 });
 
-app.delete("/ads/:idToDelete", async (req, res) => {
-  try {
-    const id = parseInt(req.params.idToDelete);
-    await Ad.delete({ id });
-    res.send("The ad has been removed");
-  } catch (err) {
-    console.log("Error", err);
-    res.send("An error has occured");
-  }
-});
+// app.delete("/ads/:idToDelete", async (req, res) => {
+//   try {
+//     const id = parseInt(req.params.idToDelete);
+//     await Ad.delete({ id });
+//     res.send("The ad has been removed");
+//   } catch (err) {
+//     console.log("Error", err);
+//     res.send("An error has occured");
+//   }
+// });
+
+app.delete("/ads/:idToDelete", adController.deleteAdById);
 
 app.put("/ads/:id", async (req, res) => {
   try {
