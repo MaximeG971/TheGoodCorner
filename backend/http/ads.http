@@ -2,6 +2,10 @@ GET http://localhost:5001/ads
 
 ###
 
+GET http://localhost:5001/search/ads/VW
+
+###
+
 GET http://localhost:5001/ads/12
 
 ###
@@ -22,7 +26,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:5001/ads/11
+DELETE http://localhost:5001/ads/16
 
 ###
 

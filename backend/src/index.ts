@@ -7,6 +7,7 @@ import { Ad } from "./entities/ad";
 import { Category } from "./entities/category";
 import { Tag } from "./entities/tag";
 import adController from "./controllers/adController";
+import { ILike } from "typeorm";
 
 const app = express();
 app.use(express.json());
@@ -48,6 +49,17 @@ app.get("/ads", adController.getAllAds);
 // });
 
 app.get("/ads/:adId", adController.getOneAdById);
+
+app.get("/search/ads/:keyword", async (req, res) => {
+  try {
+    const ads = await Ad.find({
+      where: { title: ILike(`%${req.params.keyword}%`) },
+    });
+    res.send(ads);
+  } catch (err) {
+    res.status(500).send("An error has occured");
+  }
+});
 
 app.post("/ads", async (req, res) => {
   try {

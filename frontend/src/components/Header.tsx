@@ -1,20 +1,34 @@
-import axios from "axios";
-
-import NavBar from "./NavBar";
 import Link from "next/link";
+import NavBar from "./NavBar";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   return (
     <header className="header">
       <div className="main-menu">
         <h1>
-          <a href="/" className="button logo link-button">
+          <Link href="/" className="button logo link-button">
             <span className="mobile-short-label">TGC</span>
             <span className="desktop-long-label">THE GOOD CORNER</span>
-          </a>
+          </Link>
         </h1>
-        <form className="text-field-with-button">
-          <input className="text-field main-search-field" type="search" />
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form as HTMLFormElement);
+            const formJson = Object.fromEntries(formData.entries());
+            console.log(formJson);
+            router.push(`/search/${formJson.keywords}`);
+          }}
+          className="text-field-with-button"
+        >
+          <input
+            className="text-field main-search-field"
+            name="keywords"
+            type="search"
+          />
           <button className="button button-primary">
             <svg
               aria-hidden="true"
