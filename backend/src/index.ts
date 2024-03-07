@@ -24,14 +24,16 @@ app.get("/", (_req, res) => {
 
 // ADS
 
-app.get("/ads", async (_req, res) => {
-  try {
-    const ads = await Ad.find({ relations: { category: true, tags: true } });
-    res.status(200).send(ads);
-  } catch (err) {
-    res.status(500).send("An error has occured");
-  }
-});
+// app.get("/ads", async (_req, res) => {
+//   try {
+//     const ads = await Ad.find({ relations: { category: true, tags: true } });
+//     res.status(200).send(ads);
+//   } catch (err) {
+//     res.status(500).send("An error has occured");
+//   }
+// });
+
+app.get("/ads", adController.getAllAds);
 
 // app.get("/ads/:adId", async (req, res) => {
 //   try {

@@ -12,6 +12,23 @@ const adService = {
       return err;
     }
   },
+  getAllAds: async (): Promise<Ad[]> => {
+    try {
+      const ads = await Ad.find({});
+      return ads;
+    } catch (err) {
+      console.log("err", err);
+      return err;
+    }
+  },
+  deleteAdById: async (id: number): Promise<void> => {
+    try {
+      await Ad.delete(id);
+    } catch (err) {
+      console.log("err", err);
+      return err;
+    }
+  },
 };
 
 export default adService;
