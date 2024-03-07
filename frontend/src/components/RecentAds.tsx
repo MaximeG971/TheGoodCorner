@@ -54,7 +54,6 @@ const RecentAds = () => {
             >
               Ajouter le prix au total
             </button>
-            <button className="button">Supprimer l&apos;annonce</button>
           </div>
         ))}
       </section>

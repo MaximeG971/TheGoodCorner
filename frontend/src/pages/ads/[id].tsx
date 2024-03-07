@@ -19,6 +19,15 @@ const AdDetailComponent = () => {
   }, [router.query.id]);
   console.log("fetch details from ad " + router.query.id);
 
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:5001/ads/${router.query.id}`);
+      router.push("/");
+    } catch (err) {
+      console.error("Error deleting ad", err);
+    }
+  };
+
   return (
     <div className="main-content">
       <h2 className="ad-details-title">{ad.title}</h2>
@@ -35,6 +44,9 @@ const AdDetailComponent = () => {
           </div>
         </div>
       </section>
+      <button className="button" onClick={handleDelete}>
+        Supprimer l&apos;annonce
+      </button>
     </div>
   );
 };
