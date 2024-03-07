@@ -2,6 +2,10 @@ GET http://localhost:5001/ads
 
 ###
 
+GET http://localhost:5001/ads/12
+
+###
+
 POST http://localhost:5001/ads
 Content-Type: application/json
 

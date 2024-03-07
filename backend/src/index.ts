@@ -6,6 +6,7 @@ import { dataSource } from "./config/db";
 import { Ad } from "./entities/ad";
 import { Category } from "./entities/category";
 import { Tag } from "./entities/tag";
+import adController from "./controllers/adController";
 
 const app = express();
 app.use(express.json());
@@ -32,31 +33,19 @@ app.get("/ads", async (_req, res) => {
   }
 });
 
-app.get("/ads/:adId", async (req, res) => {
-  try {
-    const result = await Ad.findOneByOrFail({
-      id: Number.parseInt(req.params.adId),
-    });
-    res.send(result);
-  } catch (err) {
-    console.log("error", err);
-    res.send("an error has occured");
-  }
-});
-
-// app.post("/ads", async (req, res) => {
+// app.get("/ads/:adId", async (req, res) => {
 //   try {
-//     console.log("data from front form", req.body);
-//     const ad = Ad.create(req.body);
-//     //  [1,2] => [{id: 1}, {id:2} ]
-//     ad.tags = req.body.tags.map((el: number) => ({ id: el }));
-//     await ad.save();
-//     res.send("Ad has been created");
+//     const result = await Ad.findOneByOrFail({
+//       id: Number.parseInt(req.params.adId),
+//     });
+//     res.send(result);
 //   } catch (err) {
 //     console.log("error", err);
-//     res.status(500).send("An error has occured");
+//     res.send("an error has occured");
 //   }
 // });
+
+app.get("/ads/:adId", adController.getOneAdById);
 
 app.post("/ads", async (req, res) => {
   try {
@@ -90,25 +79,6 @@ app.delete("/ads/:idToDelete", async (req, res) => {
     res.send("An error has occured");
   }
 });
-
-// app.put("/ads/:idToEdit", async (req, res) => {
-//   const id = parseInt(req.params.idToEdit);
-//   const ad = await Ad.findOneBy({ id });
-//   if (ad !== null) {
-//     ad.title = req.body.title;
-//     ad.description = req.body.description;
-//     ad.owner = req.body.owner;
-//     ad.price = req.body.price;
-//     ad.location = req.body.location;
-//     try {
-//       ad.save();
-//       res.send("Ad has been updated");
-//     } catch (err) {
-//       console.log("Error", err);
-//       res.status(500).send("An error has occured");
-//     }
-//   }
-// });
 
 app.put("/ads/:id", async (req, res) => {
   try {
