@@ -39,6 +39,7 @@ const RecentAds = () => {
               price={ad.price}
               title={ad.title}
               owner={ad.owner}
+              description={ad.description}
             />
             <button
               className="button"
