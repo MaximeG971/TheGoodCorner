@@ -2,7 +2,7 @@ GET http://localhost:5001/ads
 
 ###
 
-GET http://localhost:5001/search/ads/jet
+GET http://localhost:5001/search/ads/manger
 
 ###
 

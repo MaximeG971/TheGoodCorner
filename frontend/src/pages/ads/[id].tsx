@@ -1,5 +1,6 @@
 import { AdCardProps } from "@/components/AdCard";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -30,23 +31,29 @@ const AdDetailComponent = () => {
 
   return (
     <div className="main-content">
-      <h2 className="ad-details-title">{ad.title}</h2>
+      <h2 className="ad-details-title">{ad?.title}</h2>
       <section className="ad-details">
         <div className="ad-details-image-container">
-          <img className="ad-details-image" src={ad.imgUrl} />
+          <img className="ad-details-image" src={ad?.imgUrl} />
         </div>
         <div className="ad-details-info">
-          <div className="ad-details-price">{ad.price}€</div>
-          <div className="ad-details-description">{ad.description}</div>
+          <div className="ad-details-price">{ad?.price}€</div>
+          <div className="ad-details-description">{ad?.description}</div>
           <hr className="separator" />
           <div className="ad-details-owner">
-            Annoncée publiée par <b>{ad.owner}</b>.
+            Annoncée publiée par <b>{ad?.owner}</b>.
           </div>
         </div>
       </section>
       <button className="button" onClick={handleDelete}>
         Supprimer l&apos;annonce
       </button>
+      <Link
+        href={`/ads/edit/${ad?.id}`}
+        className="button button-primary link-button"
+      >
+        Modifier
+      </Link>
     </div>
   );
 };

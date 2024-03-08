@@ -54,6 +54,24 @@ const RecentAds = () => {
             >
               Ajouter le prix au total
             </button>
+            <button
+              className="button"
+              onClick={async () => {
+                try {
+                  await axios.delete(`http://localhost:5001/ads/${ad.id}`);
+                  try {
+                    const result = await axios.get<AdCardProps[]>(
+                      "http://localhost:5001/ads"
+                    );
+                    setAds(result.data);
+                  } catch (err) {}
+                } catch (err) {
+                  console.log("err", err);
+                }
+              }}
+            >
+              Supprimer l&apos;annonce
+            </button>
           </div>
         ))}
       </section>

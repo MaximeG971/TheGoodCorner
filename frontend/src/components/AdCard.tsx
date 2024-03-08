@@ -1,3 +1,5 @@
+import { Category } from "./NavBar";
+
 export type AdCardProps = {
   id?: number;
   title: string;
@@ -5,7 +7,9 @@ export type AdCardProps = {
   imgUrl: string;
   price: number;
   link: string;
-  owner: string;
+  owner?: string;
+  location?: string;
+  category?: Category;
 };
 const AdCard = ({ title, imgUrl, price, link }: AdCardProps) => {
   return (
